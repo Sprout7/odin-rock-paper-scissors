@@ -12,7 +12,6 @@
 
 function getComputerChoice() {
   const randomNum = Math.floor(Math.random() * 3) + 1;
-  console.log(randomNum);
 
   if (randomNum === 1) {
     return 'rock';
@@ -23,11 +22,37 @@ function getComputerChoice() {
   }
 }
 
-console.log(getComputerChoice());
+// console.log(getComputerChoice());
 
 function getHumanChoice() {
   const choice = prompt('Rock, Paper, or Scissors?');
   return choice;
 }
 
-console.log(getHumanChoice());
+// console.log(getHumanChoice());
+
+let humanScore = 0;
+let computerScore = 0;
+
+function playRound(humanChoice, computerChoice) {
+  if (humanChoice === computerChoice) {
+    console.log("It's a tie!");
+  } else if (
+    (humanChoice === 'rock' && computerChoice === 'scissors') ||
+    (humanChoice === 'paper' && computerChoice === 'rock') ||
+    (humanChoice === 'scissors' && computerChoice === 'paper')
+  ) {
+    ++humanScore;
+    console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+  } else {
+    ++computerScore;
+    console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+  }
+}
+
+const humanSelection = getHumanChoice().toLowerCase();
+const computerSelection = getComputerChoice().toLowerCase();
+
+playRound(humanSelection, computerSelection);
+
+console.log(humanScore, computerScore);
