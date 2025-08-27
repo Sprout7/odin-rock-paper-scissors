@@ -31,28 +31,52 @@ function getHumanChoice() {
 
 // console.log(getHumanChoice());
 
-let humanScore = 0;
-let computerScore = 0;
+function playGame() {
+  let humanScore = 0;
+  let computerScore = 0;
 
-function playRound(humanChoice, computerChoice) {
-  if (humanChoice === computerChoice) {
-    console.log("It's a tie!");
-  } else if (
-    (humanChoice === 'rock' && computerChoice === 'scissors') ||
-    (humanChoice === 'paper' && computerChoice === 'rock') ||
-    (humanChoice === 'scissors' && computerChoice === 'paper')
-  ) {
-    ++humanScore;
-    console.log(`You win! ${humanChoice} beats ${computerChoice}`);
-  } else {
-    ++computerScore;
-    console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+  function playRound(humanChoice, computerChoice) {
+    if (humanChoice === computerChoice) {
+      console.log("It's a tie!");
+    } else if (
+      (humanChoice === 'rock' && computerChoice === 'scissors') ||
+      (humanChoice === 'paper' && computerChoice === 'rock') ||
+      (humanChoice === 'scissors' && computerChoice === 'paper')
+    ) {
+      ++humanScore;
+      console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+    } else {
+      ++computerScore;
+      console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+    }
   }
+
+  const humanSelection = getHumanChoice().toLowerCase();
+  const computerSelection = getComputerChoice().toLowerCase();
+
+  playRound(humanSelection, computerSelection);
+
+  const humanSelection2 = getHumanChoice().toLowerCase();
+  const computerSelection2 = getComputerChoice().toLowerCase();
+
+  playRound(humanSelection2, computerSelection2);
+
+  const humanSelection3 = getHumanChoice().toLowerCase();
+  const computerSelection3 = getComputerChoice().toLowerCase();
+
+  playRound(humanSelection3, computerSelection3);
+
+  const humanSelection4 = getHumanChoice().toLowerCase();
+  const computerSelection4 = getComputerChoice().toLowerCase();
+
+  playRound(humanSelection4, computerSelection4);
+
+  const humanSelection5 = getHumanChoice().toLowerCase();
+  const computerSelection5 = getComputerChoice().toLowerCase();
+
+  playRound(humanSelection5, computerSelection5);
+
+  console.log(humanScore, computerScore);
 }
 
-const humanSelection = getHumanChoice().toLowerCase();
-const computerSelection = getComputerChoice().toLowerCase();
-
-playRound(humanSelection, computerSelection);
-
-console.log(humanScore, computerScore);
+playGame();
