@@ -24,3 +24,10 @@ function getComputerChoice() {
 }
 
 console.log(getComputerChoice());
+
+function getHumanChoice() {
+  const choice = prompt('Rock, Paper, or Scissors?');
+  return choice;
+}
+
+console.log(getHumanChoice());
