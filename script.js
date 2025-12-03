@@ -22,15 +22,6 @@ function getComputerChoice() {
   }
 }
 
-// console.log(getComputerChoice());
-
-function getHumanChoice() {
-  const choice = prompt('Rock, Paper, or Scissors?');
-  return choice;
-}
-
-// console.log(getHumanChoice());
-
 function playGame() {
   let humanScore = 0;
   let computerScore = 0;
@@ -51,32 +42,28 @@ function playGame() {
     }
   }
 
-  const humanSelection = getHumanChoice().toLowerCase();
-  const computerSelection = getComputerChoice().toLowerCase();
+  const rock = document.querySelector('.rock');
+  const paper = document.querySelector('.paper');
+  const scissors = document.querySelector('.scissors');
+  const score = document.querySelector('.score');
 
-  playRound(humanSelection, computerSelection);
+  rock.addEventListener('click', function () {
+    const playerSelection = 'rock';
+    const computerSelection = getComputerChoice().toLowerCase();
+    playRound(playerSelection, computerSelection);
+  });
 
-  const humanSelection2 = getHumanChoice().toLowerCase();
-  const computerSelection2 = getComputerChoice().toLowerCase();
+  paper.addEventListener('click', function () {
+    const playerSelection = 'paper';
+    const computerSelection = getComputerChoice().toLowerCase();
+    playRound(playerSelection, computerSelection);
+  });
 
-  playRound(humanSelection2, computerSelection2);
-
-  const humanSelection3 = getHumanChoice().toLowerCase();
-  const computerSelection3 = getComputerChoice().toLowerCase();
-
-  playRound(humanSelection3, computerSelection3);
-
-  const humanSelection4 = getHumanChoice().toLowerCase();
-  const computerSelection4 = getComputerChoice().toLowerCase();
-
-  playRound(humanSelection4, computerSelection4);
-
-  const humanSelection5 = getHumanChoice().toLowerCase();
-  const computerSelection5 = getComputerChoice().toLowerCase();
-
-  playRound(humanSelection5, computerSelection5);
-
-  console.log(humanScore, computerScore);
+  scissors.addEventListener('click', function () {
+    const playerSelection = 'scissors';
+    const computerSelection = getComputerChoice().toLowerCase();
+    playRound(playerSelection, computerSelection);
+  });
 }
 
 playGame();
