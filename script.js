@@ -10,6 +10,11 @@
 //  - Update and show score
 //  - Announce overall winner
 
+const rock = document.querySelector('.rock');
+const paper = document.querySelector('.paper');
+const scissors = document.querySelector('.scissors');
+const result = document.querySelector('.result');
+
 function getComputerChoice() {
   const randomNum = Math.floor(Math.random() * 3) + 1;
 
@@ -28,24 +33,19 @@ function playGame() {
 
   function playRound(humanChoice, computerChoice) {
     if (humanChoice === computerChoice) {
-      console.log("It's a tie!");
+      result.textContent = "It's a tie!";
     } else if (
       (humanChoice === 'rock' && computerChoice === 'scissors') ||
       (humanChoice === 'paper' && computerChoice === 'rock') ||
       (humanChoice === 'scissors' && computerChoice === 'paper')
     ) {
       ++humanScore;
-      console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+      result.textContent = `You win! ${humanChoice} beats ${computerChoice}`;
     } else {
       ++computerScore;
-      console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+      result.textContent = `You lose! ${computerChoice} beats ${humanChoice}`;
     }
   }
-
-  const rock = document.querySelector('.rock');
-  const paper = document.querySelector('.paper');
-  const scissors = document.querySelector('.scissors');
-  const score = document.querySelector('.score');
 
   rock.addEventListener('click', function () {
     const playerSelection = 'rock';
