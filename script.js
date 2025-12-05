@@ -14,6 +14,7 @@ const rock = document.querySelector('.rock');
 const paper = document.querySelector('.paper');
 const scissors = document.querySelector('.scissors');
 const result = document.querySelector('.result');
+const score = document.querySelector('.score');
 
 function getComputerChoice() {
   const randomNum = Math.floor(Math.random() * 3) + 1;
@@ -32,6 +33,8 @@ function playGame() {
   let computerScore = 0;
 
   function playRound(humanChoice, computerChoice) {
+    if (humanScore === 5 || computerScore === 5) return;
+
     if (humanChoice === computerChoice) {
       result.textContent = "It's a tie!";
     } else if (
@@ -45,24 +48,30 @@ function playGame() {
       ++computerScore;
       result.textContent = `You lose! ${computerChoice} beats ${humanChoice}`;
     }
+
+    // update score display
+    score.textContent = `Your Score: ${humanScore} Computer Score: ${computerScore}`;
+
+    // end messages
+    if (humanScore === 5) {
+      score.textContent = 'You win!';
+      result.textContent = '';
+    } else if (computerScore === 5) {
+      score.textContent = 'Computer wins!';
+      result.textContent = '';
+    }
   }
 
   rock.addEventListener('click', function () {
-    const playerSelection = 'rock';
-    const computerSelection = getComputerChoice().toLowerCase();
-    playRound(playerSelection, computerSelection);
+    playRound('rock', getComputerChoice());
   });
 
   paper.addEventListener('click', function () {
-    const playerSelection = 'paper';
-    const computerSelection = getComputerChoice().toLowerCase();
-    playRound(playerSelection, computerSelection);
+    playRound('paper', getComputerChoice());
   });
 
   scissors.addEventListener('click', function () {
-    const playerSelection = 'scissors';
-    const computerSelection = getComputerChoice().toLowerCase();
-    playRound(playerSelection, computerSelection);
+    playRound('scissors', getComputerChoice());
   });
 }
 
